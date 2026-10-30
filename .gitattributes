@@ -1,0 +1,5 @@
+* text=auto eol=lf
+*.txt -text
+*.md -text
+supabase/migrations/*.sql -text
+supabase/tests/database/*.sql -text

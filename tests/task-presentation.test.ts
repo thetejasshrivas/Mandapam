@@ -1,0 +1,9 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {taskView,taskSummary,taskSupport} from '../src/presentation/tasks.ts';
+import type {DraftTask} from '../src/domain/create.ts';
+const task=(id:string,extra:Partial<DraftTask>={}):DraftTask=>({id,title:id,ceremony_id:null,owner_name:null,description:null,due_date:null,status:'TO_DO',template_key:null,prerequisite_task_id:null,dismissed_at:null,archived_at:null,...extra});
+const tasks=[task('ready',{title:'Choose flowers',owner_name:'Parent',ceremony_id:'c',due_date:'2026-10-29'}),task('blocked',{prerequisite_task_id:'ready',due_date:'2026-10-28'}),task('completed',{status:'COMPLETED'}),task('deferred',{status:'DEFERRED'}),task('archived',{archived_at:'now'}),task('dismissed',{dismissed_at:'now'})];
+test('summary explicitly retains deferred/completed and derives blocking without changing status',()=>{assert.deepEqual(taskSummary(tasks),{total:4,inProgress:0,blocked:1,completed:1,deferred:1});assert.equal(tasks[1].status,'TO_DO');});
+test('filters combine real owner ceremony status search and due calendar dates',()=>{assert.deepEqual(taskView(tasks,{owner:'Parent',ceremony:'c',status:'TO_DO',search:' FLOWERS ',due:'today'},'2026-10-29').map(t=>t.id),['ready']);assert.deepEqual(taskView(tasks,{due:'overdue'},'2026-10-29').map(t=>t.id),['blocked']);assert.deepEqual(taskView(tasks,{due:'undated'},'2026-10-29').map(t=>t.id),['completed','deferred']);assert.equal(taskView(tasks,{search:'no matches'},'2026-10-29').length,0);});
+test('supporting panels exclude completed/deferred deadlines and count offline owners without making accounts',()=>{const r=taskSupport(tasks,'2026-10-29');assert.deepEqual(r.upcoming.map(t=>t.id),['ready']);assert.equal(r.blocked[0].id,'blocked');assert.deepEqual(r.owners,[{name:'Parent',count:1},{name:'Not recorded',count:2}]);});

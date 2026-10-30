@@ -1,0 +1,101 @@
+/* WP-32B: authenticated Ceremonies presentation only. */
+.cp-workspace { color:var(--mp-ink); min-width:0; }
+.cp-workspace h1,.cp-workspace h2,.cp-workspace h3 { font-family:Georgia,'Times New Roman',serif; font-weight:400; }
+.cp-workspace ::selection { background:#ead0d5; color:#501125; }
+.cp-workspace :is(button,select,a) { -webkit-tap-highlight-color:#e9d3c2; }
+.cp-hero { position:relative; isolation:isolate; overflow:hidden; display:flex; align-items:center; justify-content:space-between; min-height:164px; border:1px solid #cfaa73; border-radius:9px; background:#fff6e9; }
+.cp-hero>img { z-index:-1; object-fit:cover; object-position:center; }
+.cp-hero>div { width:61%; padding:23px 30px; background:linear-gradient(90deg,#fff8ed 60%,#fff8ed00); }
+.cp-kicker { color:#80521f; text-transform:uppercase; font-size:10px; letter-spacing:.13em; margin:0 0 8px; }
+.cp-hero h1 { color:#64162c; font:clamp(36px,3.1vw,51px)/1.1 Georgia,'Times New Roman',serif; letter-spacing:-.025em; margin:0 0 9px; }
+.cp-hero>div>p:last-of-type { font:italic 17px/1.4 Georgia,serif; color:#7d4d28; margin:0; }
+.cp-hero-rule { display:block; width:130px; height:1px; margin-top:15px; background:#c4a06a; }
+.cp-hero-note { width:24%; align-self:stretch; display:flex; align-items:center; margin:0; padding:18px 24px; font:italic 19px/1.55 Georgia,serif; color:#6b3d27; background:#fff7e9e6; }
+.cp-section-heading { display:flex; justify-content:space-between; gap:20px; align-items:center; margin:18px 0 13px; }
+.cp-section-heading h2 { font-size:26px; color:#64162c; margin:0 0 3px; }
+.cp-section-heading p { font-size:12px; color:#665d62; margin:0; }
+.cp-chooser { display:flex; align-items:center; gap:10px; font-size:12px; flex:0 1 350px; min-width:0; color:#6c4d31; }
+.cp-chooser>span { flex-shrink:0; }
+.cp-chooser select { width:100%; min-width:0; max-width:100%; min-height:44px; border:1px solid #b69872; border-radius:6px; padding:9px 30px 9px 10px; font:14px Arial,sans-serif; color:#64162c; background:#fffdf9; text-overflow:ellipsis; }
+.cp-cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px; }
+.cp-card { position:relative; min-width:0; border:1px solid #e4d8c8; border-radius:8px; background:#fffdf9; padding:16px; overflow-wrap:anywhere; }
+.cp-card.is-selected { border-color:#842b48; box-shadow:inset 0 0 0 1px #842b4812; background:#fffcf7; }
+.cp-card:focus-within { outline:2px solid var(--mp-focus); outline-offset:3px; }
+.cp-card-heading { display:flex; align-items:flex-start; gap:12px; }
+.cp-card-heading>.dash-ceremony-art { width:70px; height:70px; flex:0 0 70px; border-radius:50%; }
+.cp-card-heading>div { min-width:0; flex:1; }
+.cp-card h3 { color:#3b202b; font-size:22px; line-height:1.2; margin:2px 0 12px; overflow-wrap:anywhere; }
+.cp-card-heading p { display:flex; align-items:flex-start; gap:7px; font-size:12px; color:#665d62; margin:6px 0; }
+.cp-card-heading p svg { width:16px; height:16px; flex:0 0 16px; color:#8a2e4c; }
+.cp-completion { display:flex; align-items:center; gap:15px; margin-top:17px; }
+.cp-ring { width:56px; height:56px; flex:0 0 56px; border-radius:50%; display:grid; place-items:center; }
+.cp-ring>span { width:44px; height:44px; display:grid; place-items:center; border-radius:50%; background:#fffdf9; color:#28202a; font-size:14px; font-variant-numeric:tabular-nums; }
+.cp-progress-copy { min-width:0; flex:1; }
+.cp-progress-copy>span { display:block; font-size:12px; color:#665d62; }
+.cp-progress-copy>small { display:block; font-size:11px; color:#665d62; margin-top:3px; }
+.cp-workspace progress,.cp-empty-track { display:block; width:100%; height:7px; border:0; border-radius:5px; overflow:hidden; appearance:none; background:#eae2d6; margin-top:7px; }
+.cp-workspace progress::-webkit-progress-bar { background:#eae2d6; border-radius:5px; }.cp-workspace progress::-webkit-progress-value { background:#3e8d69; border-radius:5px; }.cp-workspace progress::-moz-progress-bar { background:#3e8d69; border-radius:5px; }
+.cp-select { display:flex; align-items:center; justify-content:space-between; width:100%; gap:10px; min-height:44px; padding:9px 0 0; margin-top:7px; background:none; color:#842b48; border:0; font:13px Arial,sans-serif; cursor:pointer; text-align:left; }
+.cp-select>span:last-child { font-size:20px; }
+.cp-select:hover>span:first-child { text-decoration:underline; text-underline-offset:3px; }
+.cp-attendance { display:flex; align-items:flex-start; gap:9px; color:#795115; padding:10px 12px; margin:13px 0 18px; border:1px solid #e6d0aa; border-radius:6px; background:#fbf1de; font-size:12px; }
+.cp-attendance svg { width:18px; height:18px; flex:0 0 18px; }
+.cp-detail { border:1px solid #d8bb8c; border-radius:9px; background:#fffdf9; overflow:clip; }
+.cp-detail-banner { display:flex; align-items:center; gap:15px; padding:16px 20px; border-bottom:1px solid #e5d2b3; background:#fff5e6; }
+.cp-detail-banner>.dash-ceremony-art { width:57px; height:57px; flex:0 0 57px; }
+.cp-detail-banner>div:not(.cp-completion) { min-width:0; flex:1; }
+.cp-detail-banner .cp-kicker { font-size:9px; margin-bottom:3px; }
+.cp-detail h2 { color:#64162c; font-size:28px; line-height:1.2; margin:0 0 5px; overflow-wrap:anywhere; scroll-margin-top:24px; }
+.cp-detail-banner>div>p:last-child { font-size:12px; color:#665d62; margin:0; }
+.cp-detail-banner>.cp-completion { margin:0 10px 0 0; min-width:195px; flex:0 1 250px; }
+.cp-detail-banner>.cp-completion .cp-ring { width:48px; height:48px; flex-basis:48px; }.cp-detail-banner>.cp-completion .cp-ring>span { width:38px; height:38px; font-size:12px; }
+.cp-primary { display:inline-flex; align-items:center; justify-content:center; gap:10px; color:#fffdf9; background:#64162c; border:1px solid #64162c; border-radius:5px; min-height:44px; padding:10px 14px; font-size:13px; text-decoration:none; flex-shrink:0; }
+.cp-primary:hover { background:#501125; }
+.cp-detail-grid { display:grid; grid-template-columns:minmax(0,2fr) minmax(250px,1fr); gap:18px; padding:18px; align-items:start; }
+.cp-panel-heading { display:flex; align-items:center; gap:9px; padding-bottom:12px; }
+.cp-panel-heading>svg { color:#a67530; width:22px; height:22px; flex:0 0 22px; }
+.cp-panel-heading h3 { font-size:21px; line-height:1.25; margin:0; }
+.cp-panel-heading p { font-size:11px; color:#665d62; margin:4px 0 0; }
+.cp-count { margin-left:auto; font-size:12px; color:#842b48; background:#f6e8e9; padding:3px 9px; border-radius:12px; }
+.cp-tasks { min-width:0; }.cp-tasks>ul { list-style:none; margin:0; padding:0; }
+.cp-tasks>ul>li { display:grid; grid-template-columns:20px minmax(0,1fr) auto; gap:12px; align-items:start; padding:14px 0; border-top:1px solid #ece2d5; }
+.cp-task-dot { display:block; width:17px; height:17px; border:1px solid #b7a69b; border-radius:50%; margin-top:4px; }
+.cp-task-dot.is-complete { border:0; color:#338362; }.cp-task-dot svg { width:20px; height:20px; }
+.cp-tasks li>div { min-width:0; }.cp-tasks li a { color:#32212b; text-decoration:none; font-size:14px; line-height:1.4; overflow-wrap:anywhere; display:inline-block; min-height:25px; padding-block:2px; }
+.cp-tasks li a:hover { color:#842b48; text-decoration:underline; text-underline-offset:3px; }
+.cp-tasks li p { font-size:11px; color:#665d62; margin:4px 0 0; overflow-wrap:anywhere; }
+.cp-tasks li .cp-blocked { display:flex; gap:6px; color:#795115; background:#fcf0db; padding:7px; border-radius:4px; margin-top:8px; }.cp-blocked svg { width:16px; height:16px; flex:0 0 16px; }
+.cp-tasks li .cp-dependency { color:#6d5041; }
+.cp-tasks .mp-badge { font-size:10px; white-space:normal; }
+.cp-support { display:grid; gap:12px; min-width:0; }
+.cp-support>section { border:1px solid #e7dac7; border-radius:7px; padding:14px; background:#fffbf4; }
+.cp-support .cp-panel-heading { padding-bottom:10px; }.cp-support h3 { font-size:18px; }
+.cp-support p { font-size:11px; line-height:1.5; color:#665d62; margin:9px 0 0; }
+.cp-support dl { margin:0; }.cp-support dl>div { display:flex; justify-content:space-between; gap:10px; border-top:1px solid #eee3d5; padding:7px 0; font-size:12px; }.cp-support dd { margin:0; color:#64162c; font-variant-numeric:tabular-nums; }
+.cp-support ul { display:flex; flex-wrap:wrap; gap:6px; list-style:none; padding:0; margin:0; }.cp-support ul>li { padding:5px 8px; background:#f5e9dd; border-radius:5px; font-size:12px; overflow-wrap:anywhere; max-width:100%; }
+.cp-support .cp-scope-note { display:flex; gap:10px; background:#fbf1de; }.cp-scope-note>svg { color:#a67530; width:24px; height:24px; flex:0 0 24px; }.cp-support .cp-scope-note>p { margin:0; }
+.cp-task-empty { padding:30px 18px; text-align:center; background:#faf5ec; border:1px solid #e7dac7; border-radius:8px; }.cp-task-empty>svg { color:#a67530; width:30px; height:30px; }.cp-task-empty h3 { font-size:22px; color:#64162c; margin:10px 0; }.cp-task-empty p { font-size:13px; color:#665d62; max-width:45ch; margin:0 auto 14px; }.cp-task-empty a { color:#842b48; font-size:14px; display:inline-block; min-height:44px; padding:10px; }
+@media(min-width:681px) and (max-width:1100px) {
+ .cp-hero-note { display:none; }.cp-hero>div { width:74%; }.cp-cards { grid-template-columns:repeat(2,minmax(0,1fr)); }.cp-detail-banner { flex-wrap:wrap; }.cp-detail-banner>.cp-completion { flex:1; }.cp-detail-grid { grid-template-columns:minmax(0,1fr); }.cp-support { grid-template-columns:repeat(2,minmax(0,1fr)); }.cp-support .cp-scope-note { grid-column:1/-1; }
+}
+@media(max-width:680px) {
+ .mandapam-app.mp-ceremonies-shell .mp-topbar { position:sticky; top:0; z-index:15; display:grid; grid-template-columns:44px minmax(0,1fr) 44px; grid-template-areas:"menu brand logout" "menu identity logout"; gap:1px 9px; padding:11px 12px; min-height:72px; background:#501125; border-bottom:2px solid #b88a43; }
+ .mandapam-app.mp-ceremonies-shell .mp-menu-toggle { grid-area:menu; color:#f5dca5; border-color:#a27a4f; background:transparent; }
+ .mandapam-app.mp-ceremonies-shell .mp-context { grid-area:brand; display:block; border:0; padding:0; }
+ .mandapam-app.mp-ceremonies-shell .mp-context>svg,.mandapam-app.mp-ceremonies-shell .mp-context-title { display:none; }
+ .mandapam-app.mp-ceremonies-shell .mp-greeting { font-size:25px; color:#f5dca5; }
+ .mandapam-app.mp-ceremonies-shell .mp-mobile-brand .mp-brand { display:flex; flex-direction:row; justify-content:flex-start; gap:6px; color:#f5dca5; font:inherit; }.mandapam-app.mp-ceremonies-shell .mp-mobile-brand .mp-brand svg { width:24px; height:27px; flex-shrink:0; }
+ .mandapam-app.mp-ceremonies-shell .mp-account { display:contents; }.mandapam-app.mp-ceremonies-shell .mp-avatar,.mandapam-app.mp-ceremonies-shell .mp-account-copy small { display:none; }.mandapam-app.mp-ceremonies-shell .mp-account-copy { grid-area:identity; margin-left:30px; color:#ead7ba; }.mandapam-app.mp-ceremonies-shell .mp-account-copy>span { max-width:100%; font-size:10px; line-height:1.3; }.mandapam-app.mp-ceremonies-shell .mp-account form { grid-area:logout; }.mandapam-app.mp-ceremonies-shell .mp-signout { color:#fff1d9; border-color:#ab8150; background:transparent; padding:8px; }.mandapam-app.mp-ceremonies-shell .mp-signout span { display:none; }
+ .mandapam-app.mp-ceremonies-shell .mp-topbar :focus-visible { outline-color:#ffe0a2; }
+ .mandapam-app.mp-ceremonies-shell .mp-content { padding:14px 14px 32px; background:#f8f1e7; }
+ .cp-hero { min-height:120px; border-radius:12px; box-shadow:inset 0 0 0 4px #fff9ef; }.cp-hero::after { content:""; position:absolute; inset:4px; border:1px solid #ead4b1; border-radius:8px; pointer-events:none; }.cp-hero>img { inset:0 0 0 auto!important; width:49%!important; object-position:67% center; }.cp-hero>div { width:100%; padding:17px 16px; background:linear-gradient(90deg,#fff8ed 40%,#fff8edba 67%,#fff8ed00 86%); }.cp-hero h1 { font-size:35px; line-height:1.1; font-weight:600; margin:7px 0 9px; }.cp-hero .cp-kicker { font-size:9px; letter-spacing:.06em; font-weight:600; }.cp-hero>div>p:last-of-type { font:12px/1.4 Arial,sans-serif; max-width:210px; }.cp-hero-note,.cp-hero-rule { display:none; }
+ .cp-section-heading { display:block; margin:20px 0 12px; }.cp-section-heading h2 { font-size:27px; font-weight:600; }.cp-section-heading p { font-size:12px; margin:5px 0 12px; }.cp-chooser { display:grid; grid-template-columns:auto minmax(0,1fr); gap:10px; font-size:12px; }.cp-chooser select { font-size:14px; }
+ .cp-cards { grid-template-columns:minmax(0,1fr); gap:12px; }.cp-card { padding:14px; border-radius:12px; border-color:#e4d6c5; }.cp-card.is-selected { border-color:#b57c8b; background:#fffdf9; }
+ .cp-card-heading { gap:12px; padding-right:20px; }.cp-card-heading>.dash-ceremony-art { width:63px; height:66px; flex:0 0 63px; border-radius:10px; padding:3px; background:#fcf2e0; border:1px solid #e7cba4; }.cp-card h3 { font-size:24px; font-weight:600; margin:0 0 9px; }.cp-card-heading p { font-size:12px; margin:6px 0; gap:5px; }.cp-card-heading p svg { width:14px; height:14px; flex-basis:14px; }
+ .cp-card .cp-select { position:absolute; top:11px; right:3px; width:44px; min-height:44px; padding:0; margin:0; justify-content:center; }.cp-card .cp-select>span:first-child { display:none; }.cp-card .cp-select>span:last-child { font-size:22px; }.cp-card .cp-select[aria-pressed=true] { color:#64162c; }
+ .cp-card .cp-completion { margin-top:11px; }.cp-card .cp-ring { display:none; }.cp-card .cp-progress-copy { position:relative; }.cp-card .cp-progress-copy>span { font-size:11px; padding-right:86px; }.cp-card .cp-progress-copy>small { position:absolute; top:0; right:0; margin:0; color:#338362; font-size:11px; }.cp-card progress,.cp-card .cp-empty-track { height:6px; margin-top:8px; }
+ .cp-attendance { font-size:12px; padding:12px; margin:14px 0 18px; border-radius:10px; line-height:1.5; }
+ .cp-detail { border-radius:12px; }.cp-detail-banner { display:grid; grid-template-columns:45px minmax(0,1fr); gap:10px; padding:15px 14px; }.cp-detail-banner>.dash-ceremony-art { width:45px; height:45px; }.cp-detail h2 { font-size:27px; font-weight:600; scroll-margin-top:90px; }.cp-detail-banner>div>p:last-child { font-size:12px; line-height:1.5; }.cp-detail-banner .cp-kicker { font-size:9px; }.cp-detail-banner>.cp-completion { grid-column:1/-1; width:100%; min-width:0; margin:5px 0 0; }.cp-detail-banner>.cp-primary { grid-column:1/-1; font-size:14px; margin-top:4px; }.cp-detail-banner>.cp-completion .cp-ring { width:48px; height:48px; }
+ .cp-detail-grid { grid-template-columns:minmax(0,1fr); gap:18px; padding:15px 13px; }.cp-panel-heading { gap:8px; }.cp-panel-heading h3 { font-size:22px; }.cp-panel-heading p { font-size:12px; }.cp-tasks>ul>li { grid-template-columns:18px minmax(0,1fr); gap:5px 9px; padding:13px 0; }.cp-tasks li a { font-size:15px; min-height:44px; padding:6px 0; }.cp-tasks li p { font-size:12px; line-height:1.5; }.cp-tasks .mp-badge { grid-column:2; justify-self:start; font-size:11px; margin-top:5px; }.cp-task-empty { padding:20px 13px; }.cp-task-empty p { font-size:12px; }.cp-support>section { padding:13px; border-radius:10px; }.cp-support h3 { font-size:20px; }.cp-support p { font-size:12px; }.cp-support dl>div { font-size:13px; }
+}
+@media(max-width:370px) { .cp-card h3 { font-size:22px; }.cp-card-heading { gap:10px; }.cp-card-heading>.dash-ceremony-art { width:55px; height:59px; flex-basis:55px; }.cp-card-heading p { font-size:11px; } }

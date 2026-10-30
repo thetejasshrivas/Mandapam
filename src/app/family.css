@@ -1,0 +1,23 @@
+/* WP-ROLES-8B: existing Mandapam shell, shared palette and native controls. */
+.family-workspace { max-width:1440px; margin:0 auto; overflow-wrap:anywhere; }
+.family-personal { max-width:900px; }
+.family-workspace .mp-card { padding:24px; margin-bottom:20px; min-width:0; }
+.family-workspace h2 { margin:0 0 12px; font:26px/1.3 var(--display); color:var(--accent); }
+.family-workspace h3 { margin:0 0 6px; font:19px/1.3 var(--display); }
+.family-workspace p { max-width:70ch; }
+.family-hero { border:1px solid var(--gold); border-radius:8px; padding:24px 32px; margin-bottom:20px; background:linear-gradient(90deg,var(--paper) 25%,transparent),url('/mandapam/wedding-banner.webp') center/cover; }
+.family-hero .mp-page-heading { max-width:540px; }
+.family-hero .eyebrow { color:var(--accent); text-transform:uppercase; letter-spacing:.12em; }
+.family-columns { display:grid; grid-template-columns:minmax(0,1.6fr) minmax(0,1fr); gap:20px; align-items:start; }
+.family-form,.family-result { display:grid; gap:12px; margin-top:20px; min-width:0; }
+.family-workspace label { font-weight:600; }
+.family-workspace textarea { display:block; width:100%; min-width:0; min-height:96px; resize:vertical; padding:12px; font:16px/1.5 var(--body); color:var(--ink); background:var(--paper); border:1px solid var(--gold); border-radius:6px; overflow-wrap:anywhere; word-break:break-all; }
+.family-result { padding-top:20px; border-top:1px solid var(--gold); }
+.family-actions { display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
+.family-workspace .family-link { display:inline-flex; align-items:center; min-height:44px; color:var(--accent); text-underline-offset:4px; }
+.family-error { color:var(--danger); border-left:3px solid var(--danger); padding:12px; }
+.family-history { list-style:none; padding:0; margin:20px 0 0; }
+.family-history li { display:flex; gap:16px; justify-content:space-between; align-items:center; padding:20px 0; border-top:1px solid var(--gold); }
+.family-history li p { margin:5px 0; color:var(--muted); }
+.family-history .mp-button { flex-shrink:0; }
+@media(max-width:800px){.family-columns{grid-template-columns:minmax(0,1fr)}.family-columns>div{display:contents}.family-columns>.mp-card{grid-row:1}.family-hero{padding:24px 20px}.family-workspace .mp-card{padding:20px}.family-history li{align-items:flex-start;flex-direction:column}}

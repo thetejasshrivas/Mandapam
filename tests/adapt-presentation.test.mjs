@@ -1,0 +1,15 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {createRequire} from 'node:module';
+import ts from 'typescript';
+import {renderToStaticMarkup} from 'react-dom/server';
+import * as React from 'react';
+import {previewAdapt} from '../src/domain/adapt.ts';
+import {formatINR} from '../src/domain/finance.ts';
+const require=createRequire(import.meta.url);
+const cost=(id,extra={})=>({id,wedding_id:'w',ceremony_id:'c',title:id,state:'PLANNED',pricing_basis:'PER_GUEST',fixed_estimate_paise:null,per_guest_rate_paise:'15000',commitment_paise:null,actual_paise:null,cancellation_settlement_paise:null,expected_refund_paise:null,archived_at:null,...extra});
+const snapshot={schema_version:1,wedding:{id:'w',state:'ACTIVE',state_version:'9007199254740993',wedding_date:null},ceremony:{id:'c',wedding_id:'w',title:'Reception',guest_count:300,venue_capacity:320,is_archived:false,ceremony_date:null},capacity:{value:320,source:'RECORDED'},costs:[cost('Return gifts'),cost('Unknown rate',{per_guest_rate_paise:null}),cost('Committed catering',{state:'COMMITTED',commitment_paise:'20000000'})],tasks:[],protected_records:{task_ids:['done'],cost_item_ids:['gift','unknown','committed'],cash_entry_ids:['payment']}};
+function render(status=null){let index=0;const current={snapshot,preview:previewAdapt(snapshot,350),proposal:status?{id:'p',status}:null},mod={exports:{}};const mocks={react:{...React,useState:initial=>[index++===1?current:initial,()=>{}],useTransition:()=>[false,()=>{}]},'next/navigation':{useRouter:()=>({refresh(){}})},'@/domain/create':{displayDate:x=>x},'@/domain/finance':{formatINR},'@/domain/adapt':{previewAdapt},'@/domain/approval':{},'@/server/adapt':{}};new Function('require','module','exports',ts.transpileModule(readFileSync('src/components/adapt/AdaptWorkspace.tsx','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,jsx:ts.JsxEmit.ReactJSX}}).outputText)(n=>Object.hasOwn(mocks,n)?mocks[n]:require(n),mod,mod.exports);return renderToStaticMarkup(React.createElement(mod.exports.default,{data:{wedding:{id:'w',title:'Synthetic plan',state_version:'9'},ceremonies:[snapshot.ceremony]},history:[],historyError:false}));}
+test('ADAPT shows reference-aligned comparison with truthful exact individual impact and unknowns',()=>{const html=render();assert.match(html,/ADAPT · Change impact/);assert.match(html,/class="adapt-comparison"/);assert.match(html,/300/);assert.match(html,/350/);assert.match(html,/₹7,500\.00/);assert.match(html,/Unknown/);assert.match(html,/30/);assert.doesNotMatch(html,/New projected total|vendor confirmed|extra staff|timeline adjusted/i);});
+test('Pending review presents protected records and deliberate disabled approval before supporting details',()=>{const html=render('PENDING');assert.match(html,/PENDING/);assert.ok(html.indexOf('Review before approval')<html.indexOf('Assumptions and manual follow-up'));assert.match(html,/Recorded payments remain unchanged/);assert.match(html,/Commitments are not overwritten/);assert.match(html,/<button[^>]*disabled=""[^>]*>Approve guest-count change/);assert.match(html,/Reject this proposal/);});

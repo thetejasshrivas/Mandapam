@@ -1,0 +1,33 @@
+-- Regression for managed auth schema grants: run against actual disposable DB.
+begin;
+create extension if not exists pgtap with schema extensions;
+-- Test infrastructure only, rolled back with the suite; no application rights added.
+grant usage on schema extensions to wedding_version_writer,wedding_mutator,wedding_guest_initializer,wedding_guest_approver;
+set local search_path=public,extensions,pg_catalog;
+select no_plan();
+select ok(to_regprocedure('wedding_private.caller_uid()') is not null,'internal identity helper exists');
+select set_config('request.jwt.claim.sub','',true);
+select set_config('request.jwt.claims','{"sub":"10000000-0000-4000-8000-000000000001","role":"authenticated"}',true);
+select is(wedding_private.caller_uid(),auth.uid(),'JSON sub matches platform auth.uid exactly');
+set local role wedding_version_writer;
+select is(wedding_private.caller_uid(),'10000000-0000-4000-8000-000000000001'::uuid,'version role resolves verified caller without auth schema usage');
+reset role;
+set local role wedding_mutator;
+select is(wedding_private.caller_uid(),'10000000-0000-4000-8000-000000000001'::uuid,'generic role resolves same caller');
+reset role;
+set local role wedding_guest_initializer;
+select is(wedding_private.caller_uid(),'10000000-0000-4000-8000-000000000001'::uuid,'initializer resolves same caller');
+reset role;
+set local role wedding_guest_approver;
+select is(wedding_private.caller_uid(),'10000000-0000-4000-8000-000000000001'::uuid,'approver resolves same caller');
+reset role;
+select set_config('request.jwt.claim.sub','10000000-0000-4000-8000-000000000002',true);
+select is(wedding_private.caller_uid(),auth.uid(),'legacy sub precedence matches platform function');
+select set_config('request.jwt.claim.sub','',true);
+select set_config('request.jwt.claims','',true);
+select is(wedding_private.caller_uid(),null::uuid,'missing identity returns null');
+select ok(not prosecdef and provolatile='s','identity helper is stable SECURITY INVOKER') from pg_proc where oid='wedding_private.caller_uid()'::regprocedure;
+select ok(not has_function_privilege('authenticated','wedding_private.caller_uid()','EXECUTE'),'ordinary client cannot execute internal identity helper');
+select ok(not has_function_privilege('anon','wedding_private.caller_uid()','EXECUTE'),'anonymous client cannot execute identity helper');
+select * from finish();
+rollback;

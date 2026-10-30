@@ -1,0 +1,108 @@
+/* WP-29: ACTIVE dashboard only. Feature pages and their editing contracts stay intact. */
+.mandapam-app .dashboard { min-width:0; color:var(--mp-ink); }
+.mandapam-app .dash-hero { position:relative; isolation:isolate; display:grid; grid-template-columns:minmax(0,1fr) 250px; min-height:222px; border:1px solid #d6ac70; border-radius:9px; overflow:hidden; background:#fff6e9; box-shadow:inset 0 0 0 6px #fff9ef; }
+.mandapam-app .dash-hero-art { position:absolute; inset:0; z-index:-1; width:100%; height:100%; object-fit:contain; }
+.mandapam-app .dash-hero-copy { padding:24px 28px 18px; max-width:67%; min-width:0; }
+.mandapam-app .dash-kicker { margin:0 0 8px; color:#80521f; font-size:10px; letter-spacing:.15em; text-transform:uppercase; }
+.mandapam-app .dash-hero h1 { color:#64162c; font:clamp(32px,2.7vw,46px)/1.12 Georgia,'Times New Roman',serif; margin:0 0 16px; overflow-wrap:anywhere; }
+.mandapam-app .dash-wedding-facts { display:flex; flex-wrap:wrap; gap:8px 18px; font-size:12px; }
+.mandapam-app .dash-wedding-facts>span { display:flex; align-items:center; gap:7px; }
+.mandapam-app .dash-wedding-facts svg,.mandapam-app .dash-guest-context>svg { width:18px; height:18px; color:var(--mp-wine); flex-shrink:0; }
+.mandapam-app .dash-guest-context { display:flex; gap:8px; align-items:flex-start; margin-top:12px; font-size:11px; }
+.mandapam-app .dash-guest-context div>span { color:var(--mp-muted); }
+.mandapam-app .dash-guest-context p { margin:2px 0 0; font-size:11px; }
+.mandapam-app .dash-celebration { padding-top:12px; border-top:1px solid #dfc395; margin:14px 0 0; font:italic 15px/1.35 Georgia,'Times New Roman',serif; color:#845921; }
+.mandapam-app .dash-overall { padding:22px 18px 16px; background:rgb(255 253 249 / 78%); border-left:1px solid #dfc395; }
+.mandapam-app .dash-overall h2 { display:flex; align-items:center; gap:8px; font:17px/1.3 Georgia,'Times New Roman',serif; margin:0 0 8px; }
+.mandapam-app .dash-overall h2 svg { color:#906525; width:18px; height:18px; }
+.mandapam-app .dash-progress-row { display:flex; align-items:center; gap:10px; }
+.mandapam-app .dash-ring { position:relative; width:106px; height:106px; flex:0 0 106px; }
+.mandapam-app .dash-ring svg { display:block; width:100%; height:100%; }
+.mandapam-app .dash-ring>span { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:0; }
+.mandapam-app .dash-ring strong { font-size:25px; line-height:1.2; font-weight:500; }
+.mandapam-app .dash-ring small { font-size:11px; }
+.mandapam-app .dash-progress-legend { list-style:none; margin:0; padding:0; font-size:11px; display:grid; gap:8px; }
+.mandapam-app .dash-progress-legend li { display:flex; align-items:center; gap:6px; }
+.mandapam-app .dash-dot { width:8px; height:8px; border-radius:50%; display:inline-block; }
+.mandapam-app .dash-dot.green { background:#46845b; }.mandapam-app .dash-dot.amber { background:#d2a04b; }.mandapam-app .dash-dot.rose { background:#c68991; }.mandapam-app .dash-dot.muted { background:#8f8984; }
+.mandapam-app .dash-overall>small { display:block; font-size:10px; color:var(--mp-muted); margin-top:2px; }
+.mandapam-app .dash-main-grid { display:grid; grid-template-columns:minmax(0,2.2fr) minmax(290px,1fr); gap:14px; margin-top:14px; align-items:stretch; }
+.mandapam-app .dash-card { min-width:0; background:var(--mp-paper); border:1px solid #e9e0d5; border-radius:8px; padding:14px 16px; box-shadow:0 2px 8px rgb(75 43 18 / 3%); }
+.mandapam-app .dash-card-heading { display:flex; align-items:center; gap:8px; margin-bottom:8px; }
+.mandapam-app .dash-card-heading>svg { width:21px; height:21px; flex:0 0 21px; color:#a37128; }
+.mandapam-app .dash-card-heading h2 { font:19px/1.25 Georgia,'Times New Roman',serif; margin:0; flex:1; }
+.mandapam-app .dash-text-link { font-size:10px; line-height:1.4; color:#7a1735; text-decoration:none; min-height:28px; display:inline-flex; align-items:center; gap:3px; flex-shrink:0; }
+.mandapam-app .dash-text-link:hover { text-decoration:underline; }
+.mandapam-app .dash-priority-description { display:flex; align-items:center; justify-content:space-between; gap:12px; margin:-6px 0 10px 29px; }
+.mandapam-app .dash-priority-description p,.mandapam-app .dash-subtitle { color:var(--mp-muted); font-size:11px; line-height:1.4; margin:0 0 10px; }
+.mandapam-app .dash-priority-description p { margin:0; }
+.mandapam-app .dash-priority-description button { width:30px; height:30px; flex:0 0 30px; display:grid; place-items:center; border:1px solid #e7ddcf; border-radius:50%; color:var(--mp-wine); background:#fffaf3; }
+.mandapam-app .dash-priority-description button svg { width:15px; height:15px; }
+.mandapam-app .dash-priorities { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; list-style:none; margin:0; padding:0; }
+.mandapam-app .dash-priorities>li { min-width:0; border:1px solid #ede3d6; border-radius:6px; padding:12px; background:#fffdf9; }
+.mandapam-app .dash-due { display:flex; align-items:center; gap:5px; color:#7b531d; font-size:10px; line-height:1.4; }
+.mandapam-app .dash-due svg { width:15px; height:15px; color:var(--mp-wine); }
+.mandapam-app .dash-due.is-overdue { color:#a12e41; }
+.mandapam-app .dash-task-title { display:flex; align-items:center; min-height:42px; margin:6px 0; color:var(--mp-ink); text-decoration:none; font-size:14px; line-height:1.35; font-weight:500; overflow-wrap:anywhere; }
+.mandapam-app .dash-task-title:hover { color:var(--mp-wine); text-decoration:underline; }
+.mandapam-app .dash-task-context { font-size:11px; color:var(--mp-muted); margin:0 0 5px; overflow-wrap:anywhere; }
+.mandapam-app .dash-task-status { font-size:10px; color:#6a5131; background:#f7f0e4; border-radius:4px; padding:2px 5px; }
+.mandapam-app .dash-reason { margin-top:7px; font-size:11px; }
+.mandapam-app .dash-reason summary { color:var(--mp-wine); cursor:pointer; min-height:25px; display:list-item; }
+.mandapam-app .dash-reason p { margin:4px 0 0; color:var(--mp-muted); }
+.mandapam-app .dash-blockers { margin-top:10px; padding:7px 10px; background:#fcf1df; border-radius:5px; color:#795115; font-size:11px; }
+.mandapam-app .dash-blockers summary { min-height:24px; cursor:pointer; }
+.mandapam-app .dash-budget-ceiling { font:27px/1.2 Georgia,'Times New Roman',serif; margin:8px 0 10px; overflow-wrap:anywhere; }
+.mandapam-app .dash-budget-ceiling small { display:block; font:11px/1.4 Arial,Helvetica,sans-serif; color:var(--mp-muted); margin-top:3px; }
+.mandapam-app .dash-obligation-bar { height:11px; display:flex; overflow:hidden; border-radius:8px; background:#eee7dd; margin-bottom:12px; }
+.mandapam-app .dash-obligation-bar span:first-child { background:#769e83; }.mandapam-app .dash-obligation-bar span:last-child { background:#96354f; }
+.mandapam-app .dash-money-trio { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:7px; margin:0; }
+.mandapam-app .dash-money-trio dt { font-size:10px; color:var(--mp-muted); }
+.mandapam-app .dash-money-trio dd { margin:3px 0 0; font-size:12px; font-weight:600; overflow-wrap:anywhere; }
+.mandapam-app .dash-money-trio small { display:block; font-size:10px; font-weight:400; }
+.mandapam-app .dash-finance-caption { color:var(--mp-muted); font-size:10px; line-height:1.4; margin:9px 0 0; }
+.mandapam-app .dash-forecast { border-top:1px solid #eee4d5; margin-top:9px; padding-top:7px; display:flex; flex-wrap:wrap; justify-content:space-between; gap:3px 8px; font-size:11px; }
+.mandapam-app .dash-forecast small { flex-basis:100%; color:var(--mp-muted); font-size:10px; }
+.mandapam-app .dash-warning { padding:8px; background:#fbefda; color:#795115; font-size:11px; }
+.mandapam-app .dash-ceremonies { display:grid; grid-template-columns:repeat(auto-fit,minmax(145px,1fr)); gap:10px; scroll-margin-top:24px; }
+.mandapam-app .dash-ceremony { border:1px solid #ece2d5; border-radius:6px; padding:12px; min-width:0; }
+.mandapam-app .dash-ceremony>header { display:flex; align-items:center; gap:8px; }
+.mandapam-app .dash-ceremony-art { width:45px; height:45px; flex:0 0 45px; }
+.mandapam-app .dash-ceremony h3 { margin:0; font:16px/1.25 Georgia,'Times New Roman',serif; overflow-wrap:anywhere; }
+.mandapam-app .dash-ceremony header p { font-size:11px; margin:4px 0 0; color:var(--mp-muted); }
+.mandapam-app .dash-ceremony-body { display:flex; align-items:center; justify-content:space-between; gap:6px; margin-top:9px; }
+.mandapam-app .dash-ceremony-body>div:first-child { display:grid; gap:3px; font-size:10px; color:var(--mp-muted); }
+.mandapam-app .dash-ceremony-body strong { font-size:14px; color:var(--mp-ink); }
+.mandapam-app .dash-ring-small { width:54px; height:54px; flex-basis:54px; }
+.mandapam-app .dash-ring-small strong { font-size:13px; }
+.mandapam-app .dash-ceremony>a { display:block; margin-top:8px; font-size:10px; color:var(--mp-wine); min-height:24px; }
+.mandapam-app .dash-proposal-heading { display:flex; justify-content:space-between; gap:8px; font-size:12px; margin-top:10px; }
+.mandapam-app .dash-proposal-state { font-size:9px; padding:3px 7px; background:#fbefda; color:#795115; border-radius:4px; }
+.mandapam-app .dash-proposal-state.state-applied { background:#e8f2e8; color:#286142; }.mandapam-app .dash-proposal-state.state-rejected { background:#f6e7ea; color:#8d2942; }
+.mandapam-app .dash-proposal-kind { margin:6px 0 4px; color:var(--mp-muted); font-size:10px; }
+.mandapam-app .dash-count-comparison { display:flex; align-items:center; gap:14px; color:var(--mp-wine); margin:9px 0; }
+.mandapam-app .dash-count-comparison div { display:grid; gap:4px; }.mandapam-app .dash-count-comparison small { color:var(--mp-muted); font-size:10px; }.mandapam-app .dash-count-comparison strong { font:28px/1.2 Georgia,'Times New Roman',serif; }
+.mandapam-app .dash-change-note { margin:8px 0; padding:9px 10px; font-size:11px; line-height:1.4; color:#795115; background:#fbf0df; border-radius:5px; }
+.mandapam-app .dash-review-button { display:inline-flex; min-height:32px; align-items:center; padding:6px 10px; color:var(--mp-wine); border:1px solid #d6b8bd; border-radius:4px; text-decoration:none; font-size:11px; }
+.mandapam-app .dash-empty-change { padding:14px 0; }.mandapam-app .dash-empty-change>svg { color:#a7772c; }.mandapam-app .dash-empty-change h3 { font:18px Georgia,'Times New Roman',serif; }.mandapam-app .dash-empty-change p { font-size:12px; color:var(--mp-muted); }
+.mandapam-app .dash-bottom-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; margin-top:14px; }
+.mandapam-app .dash-payment-totals { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:12px 0; }
+.mandapam-app .dash-payment-totals dd { margin:0; font:22px Georgia,'Times New Roman',serif; overflow-wrap:anywhere; }.mandapam-app .dash-payment-totals dt { font-size:10px; color:var(--mp-muted); margin-top:5px; }
+.mandapam-app .dash-recent-cash { list-style:none; margin:0; padding:0; }
+.mandapam-app .dash-recent-cash li { display:flex; align-items:center; gap:6px; padding:8px 0; border-top:1px solid #eee5da; font-size:11px; }
+.mandapam-app .dash-recent-cash svg { width:16px; height:16px; flex-shrink:0; color:#46845b; }.mandapam-app .dash-recent-cash div { flex:1; min-width:0; }.mandapam-app .dash-recent-cash strong { display:block; font-size:11px; overflow-wrap:anywhere; }.mandapam-app .dash-recent-cash span { display:block; font-size:10px; color:var(--mp-muted); }.mandapam-app .dash-recent-cash b { font-size:11px; white-space:nowrap; }
+.mandapam-app .dash-activity { list-style:none; margin:0; padding:0; }.mandapam-app .dash-activity li { display:flex; gap:10px; padding:8px 0; }.mandapam-app .dash-activity i { width:7px; height:7px; border-radius:50%; background:var(--mp-wine); flex:0 0 7px; margin-top:6px; }.mandapam-app .dash-activity p { margin:0; font-size:12px; }.mandapam-app .dash-activity time { color:var(--mp-muted); font-size:10px; }
+.mandapam-app .dash-coordination { font-size:12px; color:var(--mp-muted); }.mandapam-app .dash-coordination>svg { width:30px; height:30px; color:#a7772c; }.mandapam-app .dash-coordination h3 { font:17px Georgia,'Times New Roman',serif; color:var(--mp-ink); margin:6px 0; }.mandapam-app .dash-coordination p { margin:6px 0; }.mandapam-app .dash-coordination small { display:block; font-size:10px; }
+.mandapam-app .dash-empty { padding:12px 0; color:var(--mp-muted); font-size:12px; }
+.mandapam-app .dashboard-register { margin-top:18px; border:1px solid #e9e0d5; border-radius:7px; background:var(--mp-paper); padding:12px 16px; }.mandapam-app .dashboard-register>summary { min-height:36px; color:var(--mp-wine); cursor:pointer; font-size:13px; }.mandapam-app .dashboard-register .draft-section { box-shadow:none; }
+.mandapam-app .dashboard dd,.mandapam-app .dash-budget-ceiling { font-variant-numeric:tabular-nums; }
+@media(min-width:1700px){.mandapam-app .dash-hero { min-height:240px; }.mandapam-app .dash-hero-copy { padding:28px 32px; }.mandapam-app .dash-card { padding:16px 18px; }}
+@media(max-width:1150px){.mandapam-app .dash-main-grid { grid-template-columns:minmax(0,1fr); }.mandapam-app .dash-bottom-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }.mandapam-app .dash-hero-copy { max-width:85%; }.mandapam-app .dash-hero { grid-template-columns:minmax(0,1fr) 230px; }}
+@media(max-width:650px){
+ .mandapam-app .dash-hero { display:block; min-height:0; }.mandapam-app .dash-hero-art { object-fit:cover; object-position:60% top; opacity:.24; height:200px; }.mandapam-app .dash-hero-copy { max-width:none; padding:20px 18px 12px; }.mandapam-app .dash-hero h1 { font-size:29px; margin-bottom:12px; }.mandapam-app .dash-wedding-facts { font-size:12px; gap:7px 12px; }.mandapam-app .dash-celebration { display:none; }
+ .mandapam-app .dash-overall { border-left:0; border-top:1px solid #dfc395; padding:12px 18px; }.mandapam-app .dash-overall h2 { font-size:16px; }.mandapam-app .dash-progress-row { gap:20px; }.mandapam-app .dash-ring { width:80px; height:80px; flex-basis:80px; }.mandapam-app .dash-ring strong { font-size:21px; }.mandapam-app .dash-progress-legend { grid-template-columns:1fr 1fr; gap:8px 16px; }.mandapam-app .dash-overall>.dash-text-link { min-height:30px; }
+ .mandapam-app .dash-card { padding:14px; }.mandapam-app .dash-card-heading { flex-wrap:wrap; gap:7px; }.mandapam-app .dash-card-heading h2 { font-size:19px; }.mandapam-app .dash-card-heading>.dash-text-link { flex-basis:100%; margin-left:28px; min-height:30px; }.mandapam-app .dash-priority-description { margin-left:0; }.mandapam-app .dash-priority-description button { min-width:44px; min-height:44px; }
+ .mandapam-app .dash-priorities { grid-template-columns:minmax(0,1fr); gap:8px; }.mandapam-app .dash-priorities>li { padding:12px; }.mandapam-app .dash-task-title { font-size:15px; min-height:44px; margin:4px 0; }.mandapam-app .dash-due { font-size:11px; }.mandapam-app .dash-task-context { font-size:12px; }.mandapam-app .dash-reason summary { min-height:32px; padding-top:4px; }.mandapam-app .dash-priorities .dash-task-status { font-size:11px; }
+ .mandapam-app .dash-money-trio { gap:10px; }.mandapam-app .dash-money-trio dt { font-size:11px; }.mandapam-app .dash-money-trio dd { font-size:12px; }.mandapam-app .dash-ceremonies { grid-template-columns:minmax(0,1fr); }.mandapam-app .dash-ceremony { padding:14px; }.mandapam-app .dash-ceremony>a { min-height:36px; padding-top:8px; font-size:12px; }.mandapam-app .dash-ring-small { width:58px; height:58px; flex-basis:58px; }.mandapam-app .dash-ring-small strong { font-size:14px; }
+ .mandapam-app .dash-bottom-grid { grid-template-columns:minmax(0,1fr); }.mandapam-app .dash-review-button { min-height:44px; font-size:12px; }.mandapam-app .dash-blockers summary { min-height:36px; }.mandapam-app .dashboard-register>summary { min-height:44px; }
+}

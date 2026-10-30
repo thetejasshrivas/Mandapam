@@ -1,0 +1,80 @@
+/* WP-30M: only narrow Tasks presentation. The accepted desktop layout is untouched. */
+.tp-mobile-detail-brand { display:none; }
+.tp-filter-toggle>svg { display:none; }
+@media(max-width:680px) {
+ body:has(.mp-tasks-shell dialog[open]) { overflow:hidden; }
+ .mandapam-app.mp-tasks-shell .mp-topbar { display:grid; grid-template-columns:44px minmax(0,1fr) auto; grid-template-areas:"menu brand logout" "menu identity logout"; gap:1px 9px; padding:11px 12px; min-height:72px; background:var(--mp-wine-deep); border-bottom:2px solid #b88a43; }
+ .mandapam-app.mp-tasks-shell .mp-menu-toggle { grid-area:menu; color:#eed39b; border-color:#a27a4f; background:transparent; }
+ .mandapam-app.mp-tasks-shell .mp-context { grid-area:brand; display:block; min-width:0; }
+ .mandapam-app.mp-tasks-shell .mp-context-title { display:none; }
+ .mandapam-app.mp-tasks-shell .mp-greeting { font-size:22px; color:#f5dca5; line-height:1.15; }
+ .mandapam-app.mp-tasks-shell .mp-mobile-brand .mp-brand { display:flex; flex-direction:row; gap:6px; justify-content:flex-start; color:#f5dca5; font:inherit; }
+ .mandapam-app.mp-tasks-shell .mp-mobile-brand .mp-brand svg { display:block; width:23px; height:25px; flex-shrink:0; }
+ .mandapam-app.mp-tasks-shell .mp-account { display:contents; }
+ .mandapam-app.mp-tasks-shell .mp-avatar,.mandapam-app.mp-tasks-shell .mp-account-copy small { display:none; }
+ .mandapam-app.mp-tasks-shell .mp-account-copy { grid-area:identity; margin-left:29px; color:#ead7ba; }
+ .mandapam-app.mp-tasks-shell .mp-account-copy>span { max-width:100%; font-size:10px; }
+ .mandapam-app.mp-tasks-shell .mp-account form { grid-area:logout; }
+ .mandapam-app.mp-tasks-shell .mp-signout { color:#fff1d9; border-color:#ab8150; background:transparent; padding:8px; font-size:11px; gap:5px; min-height:44px; }
+ .mandapam-app.mp-tasks-shell .mp-signout svg { width:15px; }
+ .mandapam-app.mp-tasks-shell .mp-content { padding:14px 12px 32px; background:#f8f1e5; }
+ .mandapam-app.mp-tasks-shell .mp-topbar :focus-visible { outline-color:#ffe0a2; }
+ .mandapam-app.mp-tasks-shell .mp-drawer-heading { padding-bottom:14px; border-bottom:1px solid #af834e; }
+ .mandapam-app.mp-tasks-shell .mp-drawer-note { color:#ead5b2; }
+ .mandapam-app.mp-tasks-shell .mp-mobile-drawer::after { content:""; display:block; height:190px; margin-top:20px; background:url('/mandapam/sidebar-arch.webp') no-repeat center/contain; pointer-events:none; }
+ .mandapam-app .tp-banner { display:grid; grid-template-columns:minmax(0,1fr) 108px; gap:12px; padding:16px; min-height:151px; border-color:#c9a466; background:#fff8ec; box-shadow:0 2px 7px #5d31130a; }
+ .mandapam-app .tp-banner>div { grid-column:1; position:relative; max-width:100%; }
+ .mandapam-app .tp-banner>img { inset:0 0 0 auto; width:38%; height:100%; opacity:1; object-fit:cover; object-position:65% center; border-left:1px solid #ddc7a2; }
+ .mandapam-app .tp-banner h1 { font-size:29px; line-height:1.08; margin-bottom:9px; }
+ .mandapam-app .tp-banner .tp-kicker { font-size:9px; letter-spacing:1.4px; margin-bottom:8px; }
+ .mandapam-app .tp-banner>div>p:last-child { font-size:11px; line-height:1.45; color:#554235; }
+ .mandapam-app .tp-summary { gap:7px; margin-top:11px; }
+ .mandapam-app .tp-metric { min-height:61px; padding:9px 11px; gap:9px; border:0; border-radius:6px; background:#fffbf4; box-shadow:0 1px 3px #4d2d1510; }
+ .mandapam-app .tp-metric>svg { width:37px; height:37px; flex:0 0 37px; padding:7px; border-radius:50%; background:#f5ead6; color:#94621c; }
+ .mandapam-app .tp-metric strong { font-size:24px; color:var(--mp-wine-deep); }
+ .mandapam-app .tp-metric span { font-size:11px; color:#5d4d41; }
+ .mandapam-app .tp-metric:first-child { background:var(--mp-wine); }
+ .mandapam-app .tp-metric:first-child strong,.mandapam-app .tp-metric:first-child span { color:#fff5e8; }
+ .mandapam-app .tp-metric:first-child>svg { background:#ffffff12; color:#f2d18c; }
+ .mandapam-app .tp-denominator { color:#665747; font-size:10px; line-height:1.5; margin:8px 1px; }
+ .mandapam-app .tp-toolbar { padding:0; background:transparent; border:0; gap:8px; }
+ .mandapam-app .tasks-page .tp-filter-toggle { display:flex; align-items:center; gap:6px; background:var(--mp-wine); color:#fff5e6; border-color:var(--mp-wine); padding:9px 11px; font-size:12px; }
+ .mandapam-app .tp-filter-toggle>svg { display:block; width:17px; height:17px; color:#f0cf89; }
+ .mandapam-app .tp-toolbar input { background:#fffdf9; border-color:#d5c3a5; font-size:14px; }
+ .mandapam-app .tp-toolbar .tp-filters { padding:10px; background:#fff9ef; border-radius:6px; gap:8px; }
+ .mandapam-app .tp-result-row { padding:3px 0 7px; color:#594638; }
+ .mandapam-app .tp-table tr { border:0; border-left:3px solid #b38a49; background:#fffcf6; box-shadow:0 1px 4px #4c2c1310; padding:10px 11px; gap:7px 12px; margin-bottom:10px; }
+ .mandapam-app .tp-table tr[data-status="COMPLETED"] { border-left-color:#588064; }
+ .mandapam-app .tp-table tr.tp-row-selected { background:#f7e8e5; border-left-color:var(--mp-wine); }
+ .mandapam-app .tp-table button.tp-select-task { font:17px/1.25 Georgia,'Times New Roman',serif; color:var(--mp-wine-deep); gap:8px; }
+ .mandapam-app .tp-table .tp-select-icon { font:17px Arial,sans-serif; }
+ .mandapam-app .tp-table td:not(:first-child)::before { color:#776753; font-size:10px; }
+ .mandapam-app .tp-table td { color:#3f3438; font-size:11px; }
+ .mandapam-app .tp-table .tp-ceremony { display:inline-block; padding:3px 6px; border-radius:4px; color:#7c2742; background:#f7e6e6; font-size:10px; }
+ .mandapam-app .tp-table .tp-ceremony[data-ceremony="Haldi" i] { color:#795015; background:#faedcb; }
+ .mandapam-app .tp-table .tp-ceremony[data-ceremony="Mehendi" i] { color:#376044; background:#e6eddc; }
+ .mandapam-app .tp-table .tp-ceremony[data-ceremony="Shared preparation"] { color:#69522f; background:#f0e7d7; }
+ .mandapam-app .tp-blocked { color:#922b41; }
+ .mandapam-app .tp-detail { background:#faf3e7; border-color:#b88a43; }
+ .mandapam-app .tp-detail-header { padding:14px 16px; color:#fff5e9; background:var(--mp-wine-deep); border-bottom:2px solid #b88a43; align-items:center; }
+ .mandapam-app .tp-detail-header>svg { display:none; }
+ .mandapam-app .tp-detail-header h2 { font-size:23px; line-height:1.18; }
+ .mandapam-app .tp-detail-header .tp-mobile-detail-brand { display:flex; align-items:center; gap:5px; color:#efd097; font:10px/1.3 Arial,sans-serif; letter-spacing:.7px; margin-bottom:7px; }
+ .mandapam-app .tp-mobile-detail-brand svg { width:17px; height:17px; }
+ .mandapam-app .tp-detail-header button { color:#f8dfb0; background:transparent; border:1px solid #a97b4f; border-radius:50%; flex:0 0 44px; }
+ .mandapam-app .tp-detail-header :focus-visible { outline-color:#ffe0a2; }
+ .mandapam-app .tp-detail-body { padding:14px 16px 24px; font-size:13px; }
+ .mandapam-app .tp-detail-facts { gap:5px 8px; font-size:11px; padding-bottom:10px; border-bottom:1px solid #e3d3ba; }
+ .mandapam-app .tp-detail .tp-due { margin:10px 0; font-size:12px; }
+ .mandapam-app .tp-dependency { border-left:3px solid #b58b46; border-radius:0 5px 5px 0; background:#fffaf0; padding:10px 12px; margin:10px 0; }
+ .mandapam-app .tp-detail .tp-dependency.tp-warning { border-left-color:#a12e41; background:#fae8e4; }
+ .mandapam-app .tp-detail-body>form { background:#fffdf8; padding:14px; border-radius:7px; margin:14px 0; }
+ .mandapam-app .tp-detail legend { color:var(--mp-wine-deep); font-size:20px; margin-bottom:2px; }
+ .mandapam-app .tp-detail form label { color:#574137; font-size:12px; margin:11px 0 5px; }
+ .mandapam-app .tp-detail input:not([type=checkbox]) { border-color:#d8c8ad; background:#fff; }
+ .mandapam-app .tp-quick-actions { gap:7px; margin:12px 0; }
+ .mandapam-app .tp-quick-actions button { font-size:12px; padding:8px 10px; }
+ .mandapam-app .tp-detail .tp-history { color:#594739; border-top-color:#ddc9a6; }
+ .mandapam-app .tp-detail .tp-confirmation { padding:4px 0; }
+ .mandapam-app .tp-detail>.tp-notice { margin:10px 16px; }
+}
