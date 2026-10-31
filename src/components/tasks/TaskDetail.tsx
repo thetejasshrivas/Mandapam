@@ -1,21 +1,22 @@
 import type {FormEvent} from 'react';
 import {displayDate,type Draft,type DraftTask} from '@/domain/create';
 import {readiness} from '@/domain/tasks';
+import {assigneeLabel,type MemberLabel,type RosterState} from '@/presentation/tasks';
 import TaskAssignment from './TaskAssignment';
 import {rankActions,istDate} from '@/domain/priorities';
-type Props={task:DraftTask;data:Draft;pending:boolean;locked:boolean;mark:(id:string)=>void;cancel:(id:string)=>void;submit:(event:FormEvent<HTMLFormElement>,task:DraftTask|null,operation:string)=>void;status:(task:DraftTask,next:string)=>void;archive:(task:DraftTask)=>void};
+type Props={members?:MemberLabel[];rosterState?:RosterState;task:DraftTask;data:Draft;pending:boolean;locked:boolean;mark:(id:string)=>void;cancel:(id:string)=>void;submit:(event:FormEvent<HTMLFormElement>,task:DraftTask|null,operation:string)=>void;status:(task:DraftTask,next:string)=>void;archive:(task:DraftTask)=>void};
 export function timestamp(value?:string|null){return value?new Intl.DateTimeFormat('en-IN',{timeZone:'Asia/Kolkata',dateStyle:'medium',timeStyle:'short'}).format(new Date(value))+' IST':'Not recorded';}
-export default function TaskDetail({task,data,pending,locked,mark,cancel,submit,status,archive}:Props){
+export default function TaskDetail({task,data,pending,locked,mark,cancel,submit,status,archive,members=[],rosterState='loading'}:Props){
  const state=readiness(task,data.tasks),parent=data.tasks.find(t=>t.id===task.prerequisite_task_id),dependents=data.tasks.filter(t=>t.prerequisite_task_id===task.id&&!t.dismissed_at);
  const editId=`active-edit-${task.id}`,confirmId=`status-note-${task.id}`;
  const reason=rankActions(data.tasks,istDate(new Date())).actions.find(a=>a.task.id===task.id)?.reason;
  return <div className="tp-detail-body" data-task-id={task.id}>
-  <div className="tp-detail-facts"><span className="tp-ceremony">{data.ceremonies.find(c=>c.id===task.ceremony_id)?.title??'Shared preparation'}</span><span>{task.owner_name??'Owner not recorded'}</span><span className={`tp-status status-${task.status.toLowerCase()}`} data-task-status>{task.status.replaceAll('_',' ')}</span></div>
+  <div className="tp-detail-facts"><span className="tp-ceremony">{data.ceremonies.find(c=>c.id===task.ceremony_id)?.title??'Shared preparation'}</span><span>Assigned to: {assigneeLabel(task,members,rosterState)}</span>{task.owner_name&&<span>Offline contact: {task.owner_name}</span>}<span className={`tp-status status-${task.status.toLowerCase()}`} data-task-status>{task.status.replaceAll('_',' ')}</span></div>
   <p className="tp-due">Due date: <strong>{displayDate(task.due_date)}</strong></p>
   {task.description&&<p className="tp-description">{task.description}</p>}
   <section className={state.blocked?'tp-dependency tp-warning':'tp-dependency'}><h3>Prerequisite</h3><p>{parent?`${parent.title} · ${parent.archived_at?'Archived':parent.dismissed_at?'Dismissed':parent.status.replaceAll('_',' ')}`:task.prerequisite_task_id?'Prerequisite unavailable':'No prerequisite recorded.'}</p>{state.blocked&&<p data-readiness="blocked">Blocked · {state.reason}. Completion requires a deliberate out-of-order override; it does not finish the prerequisite.</p>}</section>
   {reason&&<p className="tp-ranking"><strong>Why this is next</strong><br/>{reason}</p>}
-  <TaskAssignment key={task.id+':'+data.wedding.state_version} task={task} weddingId={data.wedding.id} version={data.wedding.state_version} pending={pending} mark={mark} cancel={cancel}/>
+  <TaskAssignment members={members} rosterState={rosterState} key={task.id+':'+data.wedding.state_version} task={task} weddingId={data.wedding.id} version={data.wedding.state_version} pending={pending} mark={mark} cancel={cancel}/>
   <div className="tp-quick-actions" aria-label={`Update ${task.title}`}>
    {task.status==='TO_DO'&&<button className="tp-primary" disabled={locked} onClick={()=>status(task,'IN_PROGRESS')}>Start task</button>}
    {['TO_DO','IN_PROGRESS'].includes(task.status)&&<><button className="tp-success" disabled={locked} onClick={()=>status(task,'COMPLETED')}>{state.blocked?'Complete out of order…':'Mark complete'}</button><button disabled={locked} onClick={()=>status(task,'DEFERRED')}>Defer</button></>}

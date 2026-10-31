@@ -1,0 +1,11 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {assigneeLabel,taskView} from '../src/presentation/tasks.ts';
+import {memberLabels} from '../src/domain/member-names.ts';
+import type {DraftTask} from '../src/domain/create.ts';
+const id='71000000-0000-4000-8000-000000000002',other='71000000-0000-4000-8000-000000000003';
+const task:DraftTask={id:'task',title:'Flowers',ceremony_id:null,owner_name:'Offline Aunt',description:null,due_date:null,status:'IN_PROGRESS',template_key:null,prerequisite_task_id:null,dismissed_at:null,archived_at:null,assigned_member_id:id};
+const members=memberLabels([{id,display_name:'Asha Sharma'},{id:other,display_name:'Asha Sharma'}]);
+test('Assignment label uses secure roster, never offline owner, while retaining saved status',()=>{assert.equal(assigneeLabel(task,members,'ready'),'Asha Sharma · 00000002');assert.equal(task.status,'IN_PROGRESS');assert.equal(task.owner_name,'Offline Aunt');assert.equal(assigneeLabel({...task,assigned_member_id:null},members,'ready'),'Unassigned');});
+test('Revoked and unavailable rosters have distinct safe fallbacks',()=>{assert.match(assigneeLabel(task,[],'ready'),/Previous Member.*00000002.*not active/);assert.match(assigneeLabel(task,[],'loading'),/name loading/);assert.match(assigneeLabel(task,[],'unavailable'),/name unavailable/);assert.equal(assigneeLabel(task,memberLabels([{id}]),'ready'),'Family Member');});
+test('UUID filters distinguish duplicate names and combine with preserved offline contact filter',()=>{const tasks=[task,{...task,id:'other',assigned_member_id:other},{...task,id:'unassigned',assigned_member_id:null}];assert.deepEqual(taskView(tasks,{assignee:id,owner:'Offline Aunt'},'2026-10-31',members).map(t=>t.id),['task']);assert.deepEqual(taskView(tasks,{assignee:'unassigned'},'2026-10-31',members).map(t=>t.id),['unassigned']);assert.equal(taskView(tasks,{owner:'Offline Aunt'},'2026-10-31',members).length,3);assert.equal(taskView(tasks,{search:'Asha'},'2026-10-31',members).length,2);});
