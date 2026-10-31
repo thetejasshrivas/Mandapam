@@ -43,6 +43,9 @@ export default function DraftWorkspace({data,today}:{data:Draft;today:string}) {
   async function submit(event:FormEvent<HTMLFormElement>,operation:string,id:string) {
     event.preventDefault();if(pending)return;
     const form=event.currentTarget;const fields=Object.fromEntries(new FormData(form));
+    // Native date entry/restore can update a control before React's mirror receives a change event.
+    // Submit the visible calendar value, keeping the existing validated ceremony DTO and IDs.
+    if(operation==='setup')fields.ceremonies=JSON.stringify(selected.map(row=>({id:row.id,title:row.title,date:(form.elements.namedItem(`ceremony-${row.key}-date`) as HTMLInputElement|null)?.value??row.date,guest_count:row.guest_count})));
     setBusy(operation);setNotice(null);
     try {
       const response=await fetch(`/api/weddings/${w.id}/draft`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({operation,version:w.state_version,fields})});
