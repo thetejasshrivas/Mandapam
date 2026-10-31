@@ -1,6 +1,7 @@
 import type {FormEvent} from 'react';
 import {displayDate,type Draft,type DraftTask} from '@/domain/create';
 import {readiness} from '@/domain/tasks';
+import TaskAssignment from './TaskAssignment';
 import {rankActions,istDate} from '@/domain/priorities';
 type Props={task:DraftTask;data:Draft;pending:boolean;locked:boolean;mark:(id:string)=>void;cancel:(id:string)=>void;submit:(event:FormEvent<HTMLFormElement>,task:DraftTask|null,operation:string)=>void;status:(task:DraftTask,next:string)=>void;archive:(task:DraftTask)=>void};
 export function timestamp(value?:string|null){return value?new Intl.DateTimeFormat('en-IN',{timeZone:'Asia/Kolkata',dateStyle:'medium',timeStyle:'short'}).format(new Date(value))+' IST':'Not recorded';}
@@ -14,6 +15,7 @@ export default function TaskDetail({task,data,pending,locked,mark,cancel,submit,
   {task.description&&<p className="tp-description">{task.description}</p>}
   <section className={state.blocked?'tp-dependency tp-warning':'tp-dependency'}><h3>Prerequisite</h3><p>{parent?`${parent.title} · ${parent.archived_at?'Archived':parent.dismissed_at?'Dismissed':parent.status.replaceAll('_',' ')}`:task.prerequisite_task_id?'Prerequisite unavailable':'No prerequisite recorded.'}</p>{state.blocked&&<p data-readiness="blocked">Blocked · {state.reason}. Completion requires a deliberate out-of-order override; it does not finish the prerequisite.</p>}</section>
   {reason&&<p className="tp-ranking"><strong>Why this is next</strong><br/>{reason}</p>}
+  <TaskAssignment key={task.id+':'+data.wedding.state_version} task={task} weddingId={data.wedding.id} version={data.wedding.state_version} pending={pending} mark={mark} cancel={cancel}/>
   <div className="tp-quick-actions" aria-label={`Update ${task.title}`}>
    {task.status==='TO_DO'&&<button className="tp-primary" disabled={locked} onClick={()=>status(task,'IN_PROGRESS')}>Start task</button>}
    {['TO_DO','IN_PROGRESS'].includes(task.status)&&<><button className="tp-success" disabled={locked} onClick={()=>status(task,'COMPLETED')}>{state.blocked?'Complete out of order…':'Mark complete'}</button><button disabled={locked} onClick={()=>status(task,'DEFERRED')}>Defer</button></>}

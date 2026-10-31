@@ -3,7 +3,7 @@ export const ceremonyCatalog=[
   {key:'sangeet',title:'Sangeet'},{key:'wedding',title:'Wedding/Pheras'},{key:'reception',title:'Reception'},
 ] as const;
 export type Ceremony={id:string;title:string;ceremony_date:string|null;guest_count:number|null;is_archived:boolean};
-export type DraftTask={id:string;created_at?:string;ceremony_id:string|null;title:string;description:string|null;owner_name:string|null;due_date:string|null;status:string;template_key:string|null;prerequisite_task_id:string|null;dismissed_at:string|null;archived_at:string|null;completed_at?:string|null;status_confirmed_at?:string|null;status_confirmed_by?:string|null;updated_at?:string};
+export type DraftTask={assigned_member_id?:string|null;progress_note?:string|null;progress_updated_by?:string|null;progress_updated_at?:string|null;id:string;created_at?:string;ceremony_id:string|null;title:string;description:string|null;owner_name:string|null;due_date:string|null;status:string;template_key:string|null;prerequisite_task_id:string|null;dismissed_at:string|null;archived_at:string|null;completed_at?:string|null;status_confirmed_at?:string|null;status_confirmed_by?:string|null;updated_at?:string};
 export type Wedding={id:string;title:string;city:string;wedding_date:string|null;is_tentative:boolean;budget_ceiling_paise:string|null;state:string;state_version:string;draft_locked:boolean};
 export type Draft={wedding:Wedding;ceremonies:Ceremony[];tasks:DraftTask[]};
 const identifier=/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;

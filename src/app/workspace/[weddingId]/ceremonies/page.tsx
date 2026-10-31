@@ -14,7 +14,7 @@ export default async function CeremoniesPage({params}:{params:Promise<{weddingId
  if(!uuid.test(weddingId))notFound();
  const {data,error}=await loadDraft(context.client,context.user.id,weddingId);
  if(error)return <main className="account-shell"><h1>Ceremonies unavailable</h1><p>Please try again.</p><Link href="/workspace">Return to your workspace</Link></main>;
- if(!data)return renderMemberPlanning(context.client,weddingId,'ceremonies');
+ if(!data)return renderMemberPlanning(context.client,weddingId,'ceremonies',String(context.user.user_metadata?.full_name??context.user.email??'Family Member'));
  if(data.wedding.state!=='ACTIVE')redirect(`/workspace/${weddingId}#ceremonies`);
  return <AppShell weddingId={weddingId} title={data.wedding.title} active accountLabel={context.user.email??'Your account'}><CeremoniesWorkspace data={data}/></AppShell>;
 }

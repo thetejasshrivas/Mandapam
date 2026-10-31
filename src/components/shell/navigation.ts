@@ -1,8 +1,9 @@
 export type NavigationKey='dashboard'|'tasks'|'budget'|'ceremonies'|'changes'|'family';
 export type NavigationItem={key:NavigationKey;label:string;href:string};
 export function accountIdentity(label:string):string{const parts=label.split('@');return parts.length===2?`${parts[0].slice(0,1)}•••@${parts[1]}`:'Your account';}
-export function shellNavigation(weddingId:string|null,active:boolean):NavigationItem[]{
+export function shellNavigation(weddingId:string|null,active:boolean,role:'Admin'|'Member'='Admin'):NavigationItem[]{
  const home=weddingId?`/workspace/${weddingId}`:'/workspace';
+ if(role==='Member'&&weddingId)return[{key:'dashboard',label:'Overview',href:home},{key:'tasks',label:'Tasks',href:home+'/tasks'},{key:'ceremonies',label:'Ceremonies',href:home+'/ceremonies'}];
  const dashboard:NavigationItem={key:'dashboard',label:'Dashboard',href:home};
  const family:NavigationItem={key:'family',label:'Family & Access',href:weddingId?home+'/family':'/family/connect'};
  if(!weddingId)return[dashboard,family];
